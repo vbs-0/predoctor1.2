@@ -1,6 +1,6 @@
-# Garuda 4.0 - Food Impact Predictor
+# Predictor
 
-Garuda 4.0 is an AI-powered application that predicts how different foods affect menstrual symptoms like cramps, bloating, headaches, mood swings, fatigue, and acne. The application uses machine learning models trained on a comprehensive dataset of food attributes and their observed effects.
+is an AI-powered application that predicts how different foods affect menstrual symptoms like cramps, bloating, headaches, mood swings, fatigue, and acne. The application uses machine learning models trained on a comprehensive dataset of food attributes and their observed effects.
 
 ## Features
 
@@ -31,8 +31,8 @@ Garuda 4.0 is an AI-powered application that predicts how different foods affect
 1. Clone the repository:
 
    ```
-   git clone <repository-url>
-   cd garuda4.0
+   git clone [<repository-url>](https://github.com/vbs-0/predoctor1.2)
+   cd predoctor1.2
    ```
 
 2. Create a virtual environment (recommended):
@@ -73,7 +73,7 @@ Garuda 4.0 is an AI-powered application that predicts how different foods affect
 ## Project Structure
 
 ```
-garuda4.0/
+Predoctor1.2/
 ├── app.py                 # Main Flask application
 ├── models/
 │   ├── train_models.py    # Model training script
@@ -121,8 +121,8 @@ garuda4.0/
 
 The application uses the following Groq API keys:
 
-- Primary: "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"
-- Secondary: "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"
+- Primary: "your api key"
+- Secondary: "your api key"
 
 The application automatically falls back to the secondary key if the primary key fails.
 
