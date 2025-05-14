@@ -1,4 +1,4 @@
-# Predictor
+# Predoctor
 
 is an AI-powered application that predicts how different foods affect menstrual symptoms like cramps, bloating, headaches, mood swings, fatigue, and acne. The application uses machine learning models trained on a comprehensive dataset of food attributes and their observed effects.
 
