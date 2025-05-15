@@ -31,7 +31,7 @@ is an AI-powered application that predicts how different foods affect menstrual 
 1. Clone the repository:
 
    ```
-   git clone [<repository-url>](https://github.com/vbs-0/predoctor1.2)
+   git clone https://github.com/vbs-0/predoctor1.2
    cd predoctor1.2
    ```
 
