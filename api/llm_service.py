@@ -12,9 +12,10 @@ class GroqAPI:
         ]
         self.base_url = "https://api.groq.com/openai/v1"
         self.model = "llama-3.3-70b-versatile"
+        self.default_timeout = (20, 20) # (connect_timeout, read_timeout) in seconds
         
     def _make_request(self, endpoint, payload, api_key_index=0):
-        """Make a request to the Groq API with retry logic for API keys"""
+        """Make a request to the Groq API with retry logic for API keys and timeout"""
         headers = {
             "Content-Type": "application/json",
             "Authorization": f"Bearer {self.api_keys[api_key_index]}"
@@ -24,7 +25,8 @@ class GroqAPI:
             response = requests.post(
                 f"{self.base_url}/{endpoint}",
                 headers=headers,
-                json=payload
+                json=payload,
+                timeout=self.default_timeout
             )
             
             if response.status_code == 200:
@@ -35,16 +37,23 @@ class GroqAPI:
                 return self._make_request(endpoint, payload, api_key_index + 1)
             else:
                 print(f"API request failed: {response.status_code} - {response.text}")
-                return {"error": response.text}
+                return {"error": response.text, "status_code": response.status_code}
                 
-        except Exception as e:
+        except requests.exceptions.Timeout:
+            print(f"API request timed out after {self.default_timeout} seconds.")
+            if api_key_index < len(self.api_keys) - 1:
+                print(f"Trying next API key...")
+                return self._make_request(endpoint, payload, api_key_index + 1)
+            else:
+                return {"error": "API request timed out", "status_code": 408}
+        except requests.exceptions.RequestException as e:
             print(f"Error making API request: {str(e)}")
             if api_key_index < len(self.api_keys) - 1:
                 # Try the next API key
                 print(f"Trying next API key...")
                 return self._make_request(endpoint, payload, api_key_index + 1)
             else:
-                return {"error": str(e)}
+                return {"error": str(e), "status_code": 500} # Generic server error for other request exceptions
     
     def get_food_attributes(self, food_name):
         """Get food attributes from the LLM, including corrected food name"""
@@ -72,10 +81,6 @@ class GroqAPI:
         Return only the JSON object with these attributes, nothing else.
         """
 
-# test will be conducted based on what we have done till now and then we can proceed based on that and for that generate a complete documentation based on the json u generated previusly and then use that as referance to test it 
-
-
-
         payload = {
             "model": self.model,
             "messages": [
@@ -89,6 +94,7 @@ class GroqAPI:
         response = self._make_request("chat/completions", payload)
         
         if "error" in response:
+            print(f"Groq API error for get_food_attributes: {response.get('error')}, status: {response.get('status_code')}")
             # Return default values if API fails
             return self._get_default_food_attributes(food_name)
         
@@ -121,8 +127,8 @@ class GroqAPI:
             # For regular food items, use the original name provided by the user
             attributes["food_name"] = food_name
             return attributes
-        except Exception as e:
-            print(f"Error parsing LLM response: {str(e)}")
+        except (KeyError, IndexError, json.JSONDecodeError) as e:
+            print(f"Error parsing LLM response for get_food_attributes: {str(e)}")
             print(f"Raw response: {response}")
             # Return default values if parsing fails
             return self._get_default_food_attributes(food_name)
@@ -164,10 +170,11 @@ class GroqAPI:
         response = self._make_request("chat/completions", payload)
         
         if "error" in response:
+            print(f"Groq API error for chat: {response.get('error')}, status: {response.get('status_code')}")
             return "I'm having trouble connecting to my knowledge base right now. Please try again later."
         
         try:
             return response["choices"][0]["message"]["content"]
-        except Exception as e:
+        except (KeyError, IndexError) as e:
             print(f"Error parsing chat response: {str(e)}")
-            return "I'm having trouble generating a response right now. Please try again." 
+            return "I'm having trouble generating a response right now. Please try again."
