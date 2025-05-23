@@ -7,6 +7,8 @@ class GroqAPI:
     def __init__(self):
         # Try both API keys, use the first one that works
         self.api_keys = [
+            "your api-key-1 here"
+            "your api-key-2 here"
         "you have to enter the 2 api keys here which both are open-ai api keys mind it folks" 
         ]
         self.base_url = "https://api.groq.com/openai/v1"
