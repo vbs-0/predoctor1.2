@@ -7,8 +7,8 @@ class GroqAPI:
     def __init__(self):
         # Try both API keys, use the first one that works
         self.api_keys = [
-            "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",
-            "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"
+           
+            "replace your open-ai api-key here "
         ]
         self.base_url = "https://api.groq.com/openai/v1"
         self.model = "llama-3.3-70b-versatile"
