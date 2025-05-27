@@ -452,18 +452,21 @@
                 </div>
             </div>
 
+            
             <!-- Hero Section -->
-            <section id="hero-section" class="hero-section page-section animate__animated animate__fadeIn">
+            <section id="hero-section" class="hero-section page-section animate_animated animate_fadeIn">
                 <div class="container">
                     <div class="hero-content">
                         <h2>Discover How Foods Impact Your Menstrual Cycle</h2>
                         <div class="hero-description">
-                            <p>Our AI-powered tool predicts how different foods affect symptoms like cramps, bloating, headaches, mood swings, fatigue, and acne.</p>
+                            <p><strong>This project is designed specifically for women, especially those experiencing their menstrual periods.</strong></p>
+                            <p>Predoctor helps you understand how different foods may affect your menstrual symptoms such as cramps, bloating, headaches, mood swings, fatigue, and acne. Our AI-powered tool provides personalized, science-backed predictions and explanations to support your well-being during your cycle.</p>
+                            <p><em>Whether you want to manage symptoms or simply learn more about nutrition and menstrual health, Predoctor is here for you.</em></p>
                         </div>
                         <a href="#predictor" class="btn btn-primary">Get Started <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
-            </section>
+            </section>
 
             <!-- Predictor Section -->
             <section id="predictor" class="predictor-section page-section animate__animated">
@@ -959,6 +962,8 @@
                 document.body.classList.add('light-theme');
                 document.body.classList.remove('dark-theme');
             }
+            // Notify Android WebView if available
+            if (window.setAndroidTheme) window.setAndroidTheme(theme === DARK_THEME);
         }
 
         // Save theme preference
