@@ -763,7 +763,10 @@
                         </div>
                         <div class="mb-3">
                             <label for="login-password" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="login-password" required>
+                            <div class="password-input-container">
+                                <input type="password" class="form-control" id="login-password" required>
+                                <i class="fas fa-eye password-toggle-icon" id="toggle-login-password"></i>
+                            </div>
                         </div>
                         <div class="alert alert-danger d-none" id="login-error"></div>
                         <div class="d-grid">
@@ -798,11 +801,17 @@
                         </div>
                         <div class="mb-3">
                             <label for="register-password" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="register-password" required>
+                            <div class="password-input-container">
+                                <input type="password" class="form-control" id="register-password" required>
+                                <i class="fas fa-eye password-toggle-icon" id="toggle-register-password"></i>
+                            </div>
                         </div>
                         <div class="mb-3">
                             <label for="register-confirm-password" class="form-label">Confirm Password</label>
-                            <input type="password" class="form-control" id="register-confirm-password" required>
+                            <div class="password-input-container">
+                                <input type="password" class="form-control" id="register-confirm-password" required>
+                                <i class="fas fa-eye password-toggle-icon" id="toggle-register-confirm-password"></i>
+                            </div>
                         </div>
                         <div class="alert alert-danger d-none" id="register-error"></div>
                         <div class="d-grid">
