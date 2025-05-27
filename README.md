@@ -123,6 +123,7 @@ The application uses the following Groq API keys:
 
 - Primary: "your api key"
 - Secondary: "your api key"
+- visit to get api : https://console.groq.com
 
 The application automatically falls back to the secondary key if the primary key fails.
 
@@ -161,13 +162,9 @@ gunicorn app:app
 
 MIT License
 
-## Credits
-
-- Dataset: Menstrual Food Recommendations
-- Groq LLM API: https://console.groq.com/docs/
-- Icons: Font Awesome
-- UI Framework: Bootstrap
+Note :- complete dataset was created by syntatic code which we generated after extensive 2 years of research
 
 ## Contact
 
 For questions or support, please create an issue in the repository.
+or contact me via telegram @vsb_1
