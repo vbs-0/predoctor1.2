@@ -445,33 +445,47 @@ a:hover {
 }
 
 @media (max-width: 768px) {
-    .chat-container {
-        max-height: 70vh;
+    /* Hide descriptive text in chatbot section header */
+    .chatbot-section .section-header p {
+        display: none;
+    }
+
+    /* Adjust container padding in chatbot section for fuller width */
+    .chatbot-section .container {
+        padding: 0 10px; /* Reduced padding */
+    }
+
+    /* Ensure chat container takes full width and adjust height */
+    .chatbot-section .chat-container {
+        max-width: 100%;
+        width: 100%;
+        margin: 0;
+        height: 85vh; /* Example height, adjust as needed */
         border-radius: 0;
-        margin: 0 -15px;
-        width: calc(100% + 30px);
     }
-    
+
+    /* Adjust padding and remove border-radius for chat messages and input */
     .chat-messages {
-        padding: 15px;
+        padding: 10px;
+        border-radius: 0;
     }
-    
-    .message-content p {
-        font-size: 0.95rem;
-    }
-    
+
     .chat-input {
-        padding: 8px;
+        padding: 10px;
+        border-radius: 0;
     }
-    
-    .chat-input input {
-        padding: 8px 12px;
-        font-size: 0.9rem;
+
+    /* Ensure message content bubbles have appropriate rounded corners on mobile */
+    .message-content {
+        border-radius: 12px; /* Base rounded */
     }
-    
-    .chat-input button {
-        padding: 0 15px;
-        min-width: 60px;
+
+    .bot-message .message-content {
+        border-bottom-left-radius: 2px; /* Less rounded corner */
+    }
+
+    .user-message .message-content {
+        border-bottom-right-radius: 2px; /* Less rounded corner */
     }
 }
 
@@ -1568,7 +1582,7 @@ html {
 
 /* App Footer */
 .app-footer {
-    padding: 10px 0;
+    padding: 5px 0;
     margin-top: auto;
     background-color: var(--background-color);
     border-top: 1px solid rgba(var(--border-color-rgb), 0.2);
@@ -1813,5 +1827,43 @@ html {
         margin-bottom: 10px;
         font-size: 24px;
     }
+}
+
+/* Dark Theme Styles */
+
+/* Add styles for the password input container and toggle icon */
+.password-input-container {
+    position: relative;
+    width: 100%;
+}
+
+.password-input-container input[type="password"],
+.password-input-container input[type="text"] {
+    padding-right: 40px; /* Make space for the icon */
+}
+
+.password-toggle-icon {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #777; /* Default icon color */
+    transition: color 0.2s ease;
+    z-index: 10; /* Ensure it's above the input */
+    display: block !important; /* Force display */
+}
+
+.password-toggle-icon:hover {
+    color: #333; /* Darker color on hover */
+}
+
+/* Dark theme adjustments */
+.dark-theme .password-toggle-icon {
+    color: #aaa;
+}
+
+.dark-theme .password-toggle-icon:hover {
+    color: #eee;
 }
 
