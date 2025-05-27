@@ -72,7 +72,7 @@ class Predictor:
     def _get_fallback_predictions(self, food_data):
         """Generate fallback predictions based on food category"""
         print(f"Generating fallback predictions for: {food_data}")
-        impact_options = ["Beneficial", "Neutral", "Harmful"]
+        impact_options = ["Beneficial", "moderate", "Harmful"]
         
         # For consistent results, seed random with food name
         food_name = food_data.get("food_name", "unknown")
@@ -82,8 +82,8 @@ class Predictor:
         category = food_data.get("food_category", "").lower()
         results = {}
         
-        # Default is mostly neutral
-        default_distribution = [0.2, 0.6, 0.2]  # 20% beneficial, 60% neutral, 20% harmful
+        # Default is mostly moderate
+        default_distribution = [0.2, 0.6, 0.2]  # 20% beneficial, 60% moderate, 20% harmful
         
         # Different distributions based on food category
         distributions = {
