@@ -59,6 +59,12 @@ document.addEventListener('DOMContentLoaded', function() {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
+
+            // Prevent navigation for empty hash links like href="#"
+            if (targetId === '#' || targetId.trim() === '') {
+                return;
+            }
+
             const targetElement = document.querySelector(targetId);
             
             console.log("Clicked on link to:", targetId);
@@ -1566,4 +1572,23 @@ document.addEventListener('DOMContentLoaded', function() {
             showToast('Dark mode disabled', 'info');
         }
     }
+
+    // Password toggle functionality
+    const togglePassword = document.querySelectorAll('.password-toggle-icon');
+
+    togglePassword.forEach(icon => {
+        icon.addEventListener('click', function (e) {
+            // get the associated input field ID from the icon's ID
+            const inputId = this.id.replace('toggle-', '');
+            const passwordInput = document.getElementById(inputId);
+
+            // toggle the type attribute
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+
+            // toggle the eye slash icon
+            this.classList.toggle('fa-eye-slash');
+            this.classList.toggle('fa-eye');
+        });
+    });
 }); 
