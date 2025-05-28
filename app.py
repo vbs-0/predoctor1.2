@@ -125,12 +125,22 @@ def index():
 # Function to increment visitor count
 def increment_visitor_count():
     try:
+        # Check if this session has already been counted
+        if session.get('visited_this_session'):
+            print("Session already counted, not incrementing visitor count")
+            return
+
         with sqlite3.connect('food_predictions.db') as conn:
             cursor = conn.cursor()
             cursor.execute('UPDATE visitor_stats SET visit_count = visit_count + 1 WHERE id = 1')
             conn.commit()
+            # Mark this session as counted
+            session['visited_this_session'] = True
+            print("Incremented visitor count for a new session")
+
     except Exception as e:
         print(f"Error incrementing visitor count: {str(e)}")
+
 
 # Route to get visitor count
 @app.route('/visitor-count')
