@@ -1,12 +1,3 @@
 User: Anonymous, Time: 2025-03-26 17:05:03
-Feedback: hoio
---------------------------------------------------
-User: Anonymous, Time: 2025-03-26 17:05:38
-Feedback: thanks for creating this app
---------------------------------------------------
-User: vbs, Time: 2025-03-26 17:08:39
-Feedback: Tgabkdbd
---------------------------------------------------
-User: vbs12, Time: 2025-03-26 17:22:04
-Feedback: hehe
+Feedback: feedbacks stored here
 --------------------------------------------------
